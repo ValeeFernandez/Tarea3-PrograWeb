@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda de Contactos</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>Agenda de Contactos</h1>
+
+    <div class="app-container">
+
+      <!-- COLUMNA IZQUIERDA -->
+      <div class="left-panel">
+        <p class="panel-title">All Contacts</p>
+
+        <ul class="contact-list">
+          <li v-for="(contact, index) in contacts" :key="index" :class="{ active: selectedIndex === index }"
+            @click="selectContact(index)">
+            {{ contact.name }}
+          </li>
+        </ul>
+
+        <button @click="addContact">Add</button>
+      </div>
+
+      <!-- COLUMNA DERECHA -->
+      <div class="right-panel">
+
+        <div class="field-row">
+          <label>name:</label>
+          <input v-model="form.name" type="text">
+        </div>
+
+        <div class="field-row">
+          <label>work:</label>
+          <input v-model="form.work" type="text">
+        </div>
+
+        <div class="field-row">
+          <label>mobile:</label>
+          <input v-model="form.mobile" type="text">
+        </div>
+
+        <div class="field-row">
+          <label>email:</label>
+          <input v-model="form.email" type="text">
+        </div>
+
+        <div class="field-row">
+          <label>address:</label>
+          <textarea v-model="form.address"></textarea>
+        </div>
+
+        <div class="action-buttons">
+          <button @click="deleteContact">Delete</button>
+          <button @click="saveContact">Save</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue
+
+    createApp({
+      data() {
+        return {
+          contacts: [
+            { name: 'Gonzalo Gonzalez', work: '2222-1111', mobile: '8888-1111', email: 'gg@mail.com', address: 'San José' },
+            { name: 'Mario Maroto', work: '2222-2222', mobile: '8888-2222', email: 'mm@mail.com', address: 'Alajuela' },
+            { name: 'Rodrigo Rodriguez', work: '2222-3333', mobile: '8888-3333', email: 'rr@mail.com', address: 'Heredia' },
+            { name: 'Zara Soto', work: '2222-4444', mobile: '8888-4444', email: 'zs@mail.com', address: 'Cartago' },
+          ],
+          selectedIndex: null,
+          form: { name: '', work: '', mobile: '', email: '', address: '' }
+        }
+      },
+      
+      methods: {
+
+        selectContact(index) {
+          this.selectedIndex = index
+          this.loadContact()
+        },
+
+        loadContact() {
+          this.form = { ...this.contacts[this.selectedIndex] }
+        },
+
+        addContact() {
+          this.contacts.push({ name: 'Nuevo Contacto', work: '', mobile: '', email: '', address: '' })
+          this.selectedIndex = this.contacts.length - 1
+          this.loadContact()
+        },
+
+        saveContact() {
+          if (this.selectedIndex !== null) {
+            this.contacts[this.selectedIndex] = { ...this.form }
+          }
+        },
+
+        deleteContact() {
+          if (this.selectedIndex !== null) {
+            this.contacts.splice(this.selectedIndex, 1)
+            this.selectedIndex = null
+            this.form = { name: '', work: '', mobile: '', email: '', address: '' }
+          }
+        }
+
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+
+</html>

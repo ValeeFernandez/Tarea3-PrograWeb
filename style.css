@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  background: #f2ede8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  color: #1e2d45;
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.app-container {
+  display: flex;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(30, 45, 69, 0.10);
+  overflow: hidden;
+  width: 680px;
+  min-height: 420px;
+}
+
+/* --- COLUMNA IZQUIERDA --- */
+.left-panel {
+  width: 220px;
+  min-width: 220px;
+  background: #263651;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.panel-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a0aec0;
+}
+
+/* --- LISTA DE CONTACTOS --- */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.contact-list li {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #cbd5e0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-list li:hover {
+  background: #2d3f5c;
+  color: #ffffff;
+}
+
+.contact-list li.active {
+  background: #f2ede8;
+  color: #1e2d45;
+  font-weight: 700;
+}
+
+/* --- BOTÓN ADD --- */
+.left-panel button {
+  background: transparent;
+  color: #a0aec0;
+  border: 1.5px solid #2d3f5c;
+  border-radius: 10px;
+  padding: 9px 22px;
+  align-self: flex-end;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.left-panel button:hover {
+  background: #2d3f5c;
+  color: #ffffff;
+}
+
+/* --- COLUMNA DERECHA --- */
+.right-panel {
+  flex: 1;
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  background: #ffffff;
+}
+
+/* --- FILAS DEL FORMULARIO --- */
+.field-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.field-row label {
+  width: 65px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a0aec0;
+  padding-top: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.field-row input,
+.field-row textarea {
+  flex: 1;
+  padding: 9px 14px;
+  border: 1.5px solid #e2d9ce;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: #1e2d45;
+  background: #faf8f5;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-row input:focus,
+.field-row textarea:focus {
+  border-color: #1e2d45;
+  box-shadow: 0 0 0 3px rgba(30, 45, 69, 0.08);
+  background: #ffffff;
+}
+
+.field-row textarea {
+  height: 70px;
+  resize: none;
+}
+
+/* --- BOTONES DELETE Y SAVE --- */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.action-buttons button {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  padding: 9px 24px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: none;
+}
+
+.action-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(30, 45, 69, 0.12);
+}
+
+/* Delete — beige con borde */
+.action-buttons button:first-child {
+  background: #f2ede8;
+  color: #1e2d45;
+  border: 1.5px solid #e2d9ce;
+}
+
+.action-buttons button:first-child:hover {
+  background: #e8e0d8;
+}
+
+/* Save — azul oscuro sólido */
+.action-buttons button:last-child {
+  background: #1e2d45;
+  color: #ffffff;
+}
